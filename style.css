@@ -1,0 +1,55 @@
+body {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: sans-serif;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select,
+textarea,
+button {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+select {
+    padding: 10px;
+}
+
+textarea {
+    height: 220px;
+    padding: 10px;
+    resize: vertical;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    min-height: 120px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    white-space: pre-wrap;
+}
+
+hr {
+    margin: 30px 0;
+}
