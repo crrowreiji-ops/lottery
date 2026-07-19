@@ -131,7 +131,7 @@ for(let i = 0; i < groups.length; i++){
 }
 
 
-let resultText = `${lotteryData.name}\n\n`;
+let resultHtml = `<h3>${lotteryData.name}</h3>`;
 let totalPrize = 0;
 
 
@@ -141,7 +141,7 @@ numbers.forEach((number, index) => {
 
 
 if (!ticket) {
-        resultText += `${number} → 番号形式エラー\n`;
+        resultHtml += `${number} → 番号形式エラー\n`;
         return;
     }
 
@@ -153,8 +153,14 @@ if (!ticket) {
 
         if (checkPrize(ticket, prize)) {
 
-            resultText +=
-                `${index + 1}枚目：${number} → ${prize.name} ${prize.money.toLocaleString()}円\n`;
+            resultHtml += `
+<div class="result-row">
+    <span>${index + 1}枚目：${number}</span>
+    <span class="hit">
+        ${prize.name}（${prize.money.toLocaleString()}円）
+    </span>
+</div>
+`;
                 totalPrize += prize.money;
 
             hit = true;
@@ -165,7 +171,12 @@ if (!ticket) {
 
 
     if (!hit) {
-        resultText += `${index + 1}枚目：${number} → はずれ\n`;
+        resultHtml += `
+<div class="result-row">
+    <span>${index + 1}枚目：${number}</span>
+    <span class="miss">はずれ</span>
+</div>
+`;
     }
 
 });
@@ -175,12 +186,21 @@ const ticketPrice = 300;
 const totalCost = numbers.length * ticketPrice;
 const profit = totalPrize - totalCost;
 
-resultText += "\n------------------------\n\n";
-resultText += `当選金額合計：${totalPrize.toLocaleString()}円\n`;
-resultText += `購入枚数：${numbers.length}枚\n`;
-resultText += `購入金額：${totalCost.toLocaleString()}円\n`;
-resultText += `損益：${profit >= 0 ? "+" : ""}${profit.toLocaleString()}円`;
+resultHtml += `
+<div class="summary">
 
-result.textContent = resultText;
+    <h3>当選金額合計</h3>
+    <p>${totalPrize.toLocaleString()}円</p>
+
+    <h3>購入金額</h3>
+    <p>${totalCost.toLocaleString()}円</p>
+
+    <h3>損益</h3>
+    <p>${profit >= 0 ? "+" : ""}${profit.toLocaleString()}円</p>
+
+</div>
+`;
+
+result.innerHTML = resultHtml;
 });
 });
