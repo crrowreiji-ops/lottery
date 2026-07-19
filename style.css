@@ -97,3 +97,18 @@ hr {
 .summary p:last-child {
     margin-bottom: 0;
 }
+
+.ticket-title {
+    margin-bottom: 8px;
+}
+
+.ticket-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.deleteButton {
+    width: auto;
+    padding: 8px 16px;
+}
