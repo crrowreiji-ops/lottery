@@ -30,6 +30,30 @@ document.addEventListener("DOMContentLoaded", async () => {
         select.appendChild(option);
     });
 
+    const addButton = document.getElementById("addButton");
+const tickets = document.getElementById("tickets");
+
+let count = 1;
+
+
+addButton.addEventListener("click", () => {
+
+    count++;
+
+    const div = document.createElement("div");
+
+    div.className = "ticket";
+
+    div.innerHTML = `
+        <p>${count}枚目</p>
+
+        <input class="group" type="text" placeholder="組">
+        <input class="number" type="text" placeholder="番号">
+    `;
+
+    tickets.appendChild(div);
+
+});
 
 button.addEventListener("click", async () => {
 
@@ -46,23 +70,26 @@ button.addEventListener("click", async () => {
 
 
     // 入力された番号を取得
-    const group = document.getElementById("group").value;
-const number = document.getElementById("number").value;
-console.log(group);
-console.log(number);
-
-const numbers = [
-    `${group}組${number}`
-];
+const groups = document.querySelectorAll(".group");
+const numbersInput = document.querySelectorAll(".number");
 
 
-    console.log(numbers);
+const numbers = [];
+
+
+for(let i = 0; i < groups.length; i++){
+
+    numbers.push(
+        `${groups[i].value}組${numbersInput[i].value}`
+    );
+
+}
 
 
 let resultText = `${lotteryData.name}\n\n`;
 
 
-numbers.forEach(number => {
+numbers.forEach((number, index) => {
 
     const ticket = parseLotteryNumber(number);
 
@@ -137,7 +164,7 @@ if (!ticket) {
 
 
     if (!hit) {
-        resultText += `${number} → はずれ\n`;
+        resultText += `${index + 1}枚目：${number} → はずれ\n`;
     }
 
 });
