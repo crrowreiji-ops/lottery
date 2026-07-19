@@ -1,0 +1,55 @@
+{
+  "id": "summer2025",
+  "name": "サマージャンボ2025",
+  "drawDate": "2025-08-21",
+
+  "prizes": [
+    {
+      "name": "1等",
+      "money": 500000000,
+      "type": "exact",
+      "group": "19",
+      "number": "173515"
+    },
+    {
+      "name": "1等前後賞",
+      "money": 100000000,
+      "type": "adjacent",
+      "group": "19",
+      "number": "173515"
+    },
+    {
+      "name": "1等組違い賞",
+      "money": 100000,
+      "type": "same_number",
+      "number": "173515"
+    },
+    {
+      "name": "2等",
+      "money": 1000000,
+      "type": "exact_number",
+      "number": "121585"
+    },
+    {
+      "name": "3等",
+      "money": 10000,
+      "type": "suffix",
+      "digits": 4,
+      "number": "5326"
+    },
+    {
+      "name": "4等",
+      "money": 3000,
+      "type": "suffix",
+      "digits": 2,
+      "number": "48"
+    },
+    {
+      "name": "5等",
+      "money": 300,
+      "type": "suffix",
+      "digits": 1,
+      "number": "0"
+    }
+  ]
+}
