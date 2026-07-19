@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const select = document.getElementById("lottery");
     const button = document.getElementById("checkButton");
+    const result = document.getElementById("result");
 
     const response = await fetch("data/lotteries.json");
     const lotteries = await response.json();
@@ -62,21 +63,77 @@ numbers.forEach(number => {
 
     const ticket = parseLotteryNumber(number);
 
-    if (!ticket) {
+    function checkPrize(ticket, prize) {
+
+    switch (prize.type) {
+
+        // 組も番号も一致（1等）
+        case "exact":
+            return (
+                ticket.group === prize.group &&
+                ticket.number === prize.number
+            );
+
+
+        // 前後賞
+        case "adjacent":
+            if (ticket.group !== prize.group) {
+                return false;
+            }
+
+            const target = Number(prize.number);
+            const number = Number(ticket.number);
+
+            return (
+                number === target - 1 ||
+                number === target + 1
+            );
+
+
+        // 組違い賞
+        case "same_number":
+            return ticket.number === prize.number;
+
+
+        // 番号だけ一致
+        case "exact_number":
+            return ticket.number === prize.number;
+
+
+        // 下〇桁
+        case "suffix":
+            return ticket.number.slice(-prize.digits) === prize.number;
+
+
+        default:
+            return false;
+    }
+}
+
+if (!ticket) {
         resultText += `${number} → 番号形式エラー\n`;
         return;
     }
 
 
-    const firstPrize = lotteryData.prizes[0];
+    let hit = false;
 
 
-    if (
-        ticket.group === firstPrize.group &&
-        ticket.number === firstPrize.number
-    ) {
-        resultText += `${number} → ${firstPrize.name} ${firstPrize.money.toLocaleString()}円\n`;
-    } else {
+    for (const prize of lotteryData.prizes) {
+
+        if (checkPrize(ticket, prize)) {
+
+            resultText +=
+                `${number} → ${prize.name} ${prize.money.toLocaleString()}円\n`;
+
+            hit = true;
+            break;
+        }
+
+    }
+
+
+    if (!hit) {
         resultText += `${number} → はずれ\n`;
     }
 
