@@ -27,3 +27,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
 });
+
+const button = document.getElementById("checkButton");
+
+button.addEventListener("click", async () => {
+
+    const lotteryId = document.getElementById("lottery").value;
+
+    const response = await fetch(`data/${lotteryId}.json`);
+    const lotteryData = await response.json();
+
+    document.getElementById("result").textContent =
+        `${lotteryData.name} を読み込みました`;
+
+});
