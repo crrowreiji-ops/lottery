@@ -74,6 +74,19 @@ const tickets = document.getElementById("tickets");
 let count = 1;
 
 
+function updateTicketNumbers() {
+   const ticketList = document.querySelectorAll(".ticket");
+
+    ticketList.forEach((ticket, index) => {
+
+        ticket.querySelector(".ticket-title").textContent =
+            `${index + 1}枚目`;
+
+    });
+
+    count = ticketList.length;
+}
+
 addButton.addEventListener("click", () => {
 
     count++;
@@ -82,12 +95,19 @@ addButton.addEventListener("click", () => {
 
     div.className = "ticket";
 
-    div.innerHTML = `
-        <p>${count}枚目</p>
+div.innerHTML = `
+    <p class="ticket-title">${count}枚目</p>
 
-        <input class="group" type="text" placeholder="01" maxlength="2" inputmode="numeric">
+    <input class="group" type="text" placeholder="01" maxlength="2" inputmode="numeric">
     <input class="number" type="text" placeholder="111111" maxlength="6" inputmode="numeric">
-    `;
+
+    <button class="deleteButton">削除</button>
+`;
+
+div.querySelector(".deleteButton").addEventListener("click", () => {
+    div.remove();
+    updateTicketNumbers();
+});
 
     tickets.appendChild(div);
 
