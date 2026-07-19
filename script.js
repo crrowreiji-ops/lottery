@@ -85,8 +85,8 @@ addButton.addEventListener("click", () => {
     div.innerHTML = `
         <p>${count}枚目</p>
 
-        <input class="group" type="text" placeholder="組">
-        <input class="number" type="text" placeholder="番号">
+        <input class="group" type="text" placeholder="01" maxlength="2" inputmode="numeric">
+    <input class="number" type="text" placeholder="111111" maxlength="6" inputmode="numeric">
     `;
 
     tickets.appendChild(div);
@@ -132,6 +132,7 @@ for(let i = 0; i < groups.length; i++){
 
 
 let resultText = `${lotteryData.name}\n\n`;
+let totalPrize = 0;
 
 
 numbers.forEach((number, index) => {
@@ -154,6 +155,7 @@ if (!ticket) {
 
             resultText +=
                 `${index + 1}枚目：${number} → ${prize.name} ${prize.money.toLocaleString()}円\n`;
+                totalPrize += prize.money;
 
             hit = true;
             break;
@@ -168,6 +170,16 @@ if (!ticket) {
 
 });
 
+// チケットの金額をここで定義
+const ticketPrice = 300;
+const totalCost = numbers.length * ticketPrice;
+const profit = totalPrize - totalCost;
+
+resultText += "\n------------------------\n\n";
+resultText += `当選金額合計：${totalPrize.toLocaleString()}円\n`;
+resultText += `購入枚数：${numbers.length}枚\n`;
+resultText += `購入金額：${totalCost.toLocaleString()}円\n`;
+resultText += `損益：${profit >= 0 ? "+" : ""}${profit.toLocaleString()}円`;
 
 result.textContent = resultText;
 });
