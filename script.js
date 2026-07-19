@@ -48,7 +48,8 @@ button.addEventListener("click", async () => {
     // 入力された番号を取得
     const group = document.getElementById("group").value;
 const number = document.getElementById("number").value;
-
+console.log(group);
+console.log(number);
 
 const numbers = [
     `${group}組${number}`
