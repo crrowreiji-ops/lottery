@@ -12,6 +12,44 @@ function parseLotteryNumber(text) {
     };
 }
 
+
+function checkPrize(ticket, prize) {
+
+    switch (prize.type) {
+
+        case "exact":
+            return (
+                ticket.group === prize.group &&
+                ticket.number === prize.number
+            );
+
+        case "adjacent":
+            if (ticket.group !== prize.group) {
+                return false;
+            }
+
+            const target = Number(prize.number);
+            const number = Number(ticket.number);
+
+            return (
+                number === target - 1 ||
+                number === target + 1
+            );
+
+        case "same_number":
+            return ticket.number === prize.number;
+
+        case "exact_number":
+            return ticket.number === prize.number;
+
+        case "suffix":
+            return ticket.number.slice(-prize.digits) === prize.number;
+
+        default:
+            return false;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     const select = document.getElementById("lottery");
@@ -93,52 +131,6 @@ numbers.forEach((number, index) => {
 
     const ticket = parseLotteryNumber(number);
 
-    function checkPrize(ticket, prize) {
-
-    switch (prize.type) {
-
-        // 組も番号も一致（1等）
-        case "exact":
-            return (
-                ticket.group === prize.group &&
-                ticket.number === prize.number
-            );
-
-
-        // 前後賞
-        case "adjacent":
-            if (ticket.group !== prize.group) {
-                return false;
-            }
-
-            const target = Number(prize.number);
-            const number = Number(ticket.number);
-
-            return (
-                number === target - 1 ||
-                number === target + 1
-            );
-
-
-        // 組違い賞
-        case "same_number":
-            return ticket.number === prize.number;
-
-
-        // 番号だけ一致
-        case "exact_number":
-            return ticket.number === prize.number;
-
-
-        // 下〇桁
-        case "suffix":
-            return ticket.number.slice(-prize.digits) === prize.number;
-
-
-        default:
-            return false;
-    }
-}
 
 if (!ticket) {
         resultText += `${number} → 番号形式エラー\n`;
@@ -154,7 +146,7 @@ if (!ticket) {
         if (checkPrize(ticket, prize)) {
 
             resultText +=
-                `${number} → ${prize.name} ${prize.money.toLocaleString()}円\n`;
+                `${index + 1}枚目：${number} → ${prize.name} ${prize.money.toLocaleString()}円\n`;
 
             hit = true;
             break;
