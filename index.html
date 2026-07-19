@@ -16,19 +16,19 @@
     <select id="lottery"></select>
 
     <label for="numbers">番号を入力（1行1枚）</label>
-    <div class="input-area">
+<div id="tickets">
 
-    <label>
-        組
-        <input id="group" type="text" placeholder="19">
-    </label>
+    <div class="ticket">
+        <p>1枚目</p>
 
-    <label>
-        番号
-        <input id="number" type="text" placeholder="173515">
-    </label>
+        <input class="group" type="text" placeholder="組">
+        <input class="number" type="text" placeholder="番号">
+
+    </div>
 
 </div>
+
+<button id="addButton">＋追加</button>
 
     <button id="checkButton">判定する</button>
 
