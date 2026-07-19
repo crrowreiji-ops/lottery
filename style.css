@@ -53,3 +53,47 @@ button {
 hr {
     margin: 30px 0;
 }
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.hit {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.miss {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.summary {
+    margin-top: 24px;
+    padding: 20px;
+
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.summary h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+}
+
+.summary p {
+    margin: 0 0 18px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.summary p:last-child {
+    margin-bottom: 0;
+}
