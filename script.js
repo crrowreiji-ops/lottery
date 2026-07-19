@@ -117,6 +117,13 @@ const numbers = [];
 
 for(let i = 0; i < groups.length; i++){
 
+    if (
+        groups[i].value === "" ||
+        numbersInput[i].value === ""
+    ) {
+        continue;
+    }
+
     numbers.push(
         `${groups[i].value}組${numbersInput[i].value}`
     );
