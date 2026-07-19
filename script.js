@@ -1,4 +1,3 @@
-console.log("script.js開始");
 document.addEventListener("DOMContentLoaded", async () => {
 
     const select = document.getElementById("lottery");
@@ -17,16 +16,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-    button.addEventListener("click", async () => {
-console.log("ボタン押された");
-        const lotteryId = select.value;
+button.addEventListener("click", async () => {
 
-        const response = await fetch(`data/${lotteryId}.json`);
-        const lotteryData = await response.json();
+    console.log("ボタン押された");
 
-        document.getElementById("result").textContent =
-            `${lotteryData.name} を読み込みました`;
+    const lotteryId = select.value;
 
-    });
+    console.log("選択:", lotteryId);
 
+
+    const response = await fetch(`data/${lotteryId}.json`);
+
+    const lotteryData = await response.json();
+
+
+    // 入力された番号を取得
+    const input = document.getElementById("numbers").value;
+
+
+    // 改行で分割
+    const numbers = input.split("\n");
+
+
+    console.log(numbers);
+
+
+    result.textContent =
+        `${lotteryData.name} を読み込みました\n\n` +
+        "入力された番号:\n" +
+        numbers.join("\n");
+
+});
 });
