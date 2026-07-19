@@ -85,8 +85,8 @@ addButton.addEventListener("click", () => {
     div.innerHTML = `
         <p>${count}枚目</p>
 
-        <input class="group" type="text" placeholder="組">
-        <input class="number" type="text" placeholder="番号">
+        <input class="group" type="text" placeholder="01" maxlength="2" inputmode="numeric">
+    <input class="number" type="text" placeholder="111111" maxlength="6" inputmode="numeric">
     `;
 
     tickets.appendChild(div);
