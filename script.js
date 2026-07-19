@@ -46,11 +46,13 @@ button.addEventListener("click", async () => {
 
 
     // 入力された番号を取得
-    const input = document.getElementById("numbers").value;
+    const group = document.getElementById("group").value;
+const number = document.getElementById("number").value;
 
 
-    // 改行で分割
-    const numbers = input.split("\n");
+const numbers = [
+    `${group}組${number}`
+];
 
 
     console.log(numbers);
