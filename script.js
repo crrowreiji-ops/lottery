@@ -1,3 +1,4 @@
+console.log("script.js開始");
 document.addEventListener("DOMContentLoaded", async () => {
 
     const select = document.getElementById("lottery");
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     button.addEventListener("click", async () => {
-
+console.log("ボタン押された");
         const lotteryId = select.value;
 
         const response = await fetch(`data/${lotteryId}.json`);
