@@ -68,10 +68,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         select.appendChild(option);
     });
 
-    const addButton = document.getElementById("addButton");
+const addButton = document.getElementById("addButton");
 const tickets = document.getElementById("tickets");
 
-let count = 1;
+let count = 0;
 
 
 function updateTicketNumbers() {
@@ -87,7 +87,7 @@ function updateTicketNumbers() {
     count = ticketList.length;
 }
 
-addButton.addEventListener("click", () => {
+function createTicket() {
 
     count++;
 
@@ -95,25 +95,47 @@ addButton.addEventListener("click", () => {
 
     div.className = "ticket";
 
-div.innerHTML = `
-    <p class="ticket-title">${count}枚目</p>
+    div.innerHTML = `
+        <p class="ticket-title">${count}枚目</p>
 
-    <input class="group" type="text" placeholder="01" maxlength="2" inputmode="numeric">
-    <input class="number" type="text" placeholder="111111" maxlength="6" inputmode="numeric">
+        <div class="ticket-inputs">
 
-    <button class="deleteButton">
-    <span class="material-symbols-outlined">
-        delete
-    </span>
-</button>
-`;
+            <input class="group" type="text"
+                placeholder="01"
+                maxlength="2"
+                inputmode="numeric">
 
-div.querySelector(".deleteButton").addEventListener("click", () => {
-    div.remove();
-    updateTicketNumbers();
-});
+            <input class="number" type="text"
+                placeholder="111111"
+                maxlength="6"
+                inputmode="numeric">
+
+            <button class="deleteButton">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+            </button>
+
+        </div>
+    `;
+
+    div.querySelector(".deleteButton").addEventListener("click", () => {
+
+        div.remove();
+
+        updateTicketNumbers();
+
+    });
 
     tickets.appendChild(div);
+
+}
+
+createTicket();
+
+addButton.addEventListener("click", () => {
+
+    createTicket();
 
 });
 
