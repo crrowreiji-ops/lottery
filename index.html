@@ -14,7 +14,10 @@
 
 <body>
 
-    <h1>🎯 宝くじチェッカー</h1>
+    <h1>
+    <span class="material-symbols-outlined">confirmation_number</span>
+    宝くじチェッカー
+</h1>
 
     <label for="lottery">対象</label>
     <select id="lottery"></select>
@@ -26,22 +29,26 @@
         <p class="ticket-title">1枚目</p>
 
         <div class="ticket-inputs">
-        <input class="group" type="text" placeholder="01" maxlength="2" inputmode="numeric">
-    <input class="number" type="text" placeholder="111111" maxlength="6" inputmode="numeric">
+            <input class="group" type="text" placeholder="01" maxlength="2" inputmode="numeric">
+            <input class="number" type="text" placeholder="111111" maxlength="6" inputmode="numeric">
 
-    <button class="deleteButton">
-    <span class="material-symbols-outlined">
-        delete
-    </span>
-</button>
-</div>
+            <button class="deleteButton">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        </div>
     </div>
 
 </div>
 
-<button id="addButton">＋追加</button>
+<button id="addButton">
+    <span class="material-symbols-outlined">add</span>
+    追加
+</button>
 
-    <button id="checkButton">判定する</button>
+    <button id="checkButton">
+    <span class="material-symbols-outlined">check_circle</span>
+    判定する
+</button>
 
     <hr>
 
