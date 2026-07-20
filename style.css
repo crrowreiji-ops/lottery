@@ -84,6 +84,13 @@ hr {
     font-size: 22px;
 }
 
+.serial-input{
+    display:grid;
+    grid-template-columns:1fr 2fr 1fr;
+    gap:10px;
+    margin-top:15px;
+}
+
 /* ===========================
    結果
 =========================== */
