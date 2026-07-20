@@ -101,7 +101,11 @@ div.innerHTML = `
     <input class="group" type="text" placeholder="01" maxlength="2" inputmode="numeric">
     <input class="number" type="text" placeholder="111111" maxlength="6" inputmode="numeric">
 
-    <button class="deleteButton">削除</button>
+    <button class="deleteButton">
+    <span class="material-symbols-outlined">
+        delete
+    </span>
+</button>
 `;
 
 div.querySelector(".deleteButton").addEventListener("click", () => {

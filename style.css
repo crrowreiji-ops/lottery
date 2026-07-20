@@ -102,13 +102,26 @@ hr {
     margin-bottom: 8px;
 }
 
-.ticket-inputs {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.ticket-inputs{
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap:10px;
 }
 
-.deleteButton {
-    width: auto;
-    padding: 8px 16px;
+.deleteButton{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+    padding:10px;
+}
+
+.ticket-inputs input{
+    width:100%;
+    box-sizing:border-box;
+}
+
+.material-symbols-outlined{
+    font-size:26px;
 }
