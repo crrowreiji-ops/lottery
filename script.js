@@ -143,14 +143,14 @@ serialButton.addEventListener("click", () => {
 
     const group = document.getElementById("serialGroup").value;
     const start = Number(document.getElementById("serialStart").value);
-    const count = Number(document.getElementById("serialCount").value);
+    const ticketCount = Number(document.getElementById("serialCount").value);
 
     if (!group || isNaN(start) || isNaN(count) || count <= 0) {
         alert("入力内容を確認してください");
         return;
     }
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < ticketCount; i++) {
 
         createTicket(
             group.padStart(2, "0"),
