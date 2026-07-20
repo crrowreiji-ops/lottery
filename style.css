@@ -109,6 +109,33 @@ hr {
 .button-row button {
     margin-top: 0;
 }
+
+.serial-card{
+
+    margin-top:20px;
+    padding:20px;
+
+    border:1px solid #ddd;
+    border-radius:10px;
+
+    background:#fafafa;
+
+}
+
+.serial-card h3{
+
+    margin:0 0 8px;
+
+}
+
+.serial-description{
+
+    margin:0 0 16px;
+
+    color:#666;
+    font-size:14px;
+
+}
 /* ===========================
    結果
 =========================== */
