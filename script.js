@@ -73,6 +73,7 @@ const tickets = document.getElementById("tickets");
 
 const serialButton = document.getElementById("serialButton");
 const serialArea = document.getElementById("serialArea");
+const generateSerialButton = document.getElementById("generateSerialButton");
 
 let count = 0;
 
@@ -140,36 +141,56 @@ function createTicket(group = "", number = "") {
 
 createTicket();
 
-const serialButton = document.getElementById("serialButton");
 
 serialButton.addEventListener("click", () => {
+
+    // const group = document.getElementById("serialGroup").value;
+    // const start = Number(document.getElementById("serialStart").value);
+    // const ticketCount = Number(document.getElementById("serialCount").value);
+
+    // if (!group || isNaN(start) || isNaN(count) || ticketCount <= 0) {
+    //     alert("入力内容を確認してください");
+    //     return;
+    // }
+
+    // for (let i = 0; i < ticketCount; i++) {
+
+    //     createTicket(
+    //         group.padStart(2, "0"),
+    //         String(start + i).padStart(6, "0")
+    //     );
+
+    // }
+
+    serialArea.classList.toggle("open");
+
+    // if (serialArea.style.display === "none") {
+    //     serialArea.style.display = "block";
+    // } else {
+    //     serialArea.style.display = "none";
+    // }
+
+});
+
+generateSerialButton.addEventListener("click", () => {
 
     const group = document.getElementById("serialGroup").value;
     const start = Number(document.getElementById("serialStart").value);
     const ticketCount = Number(document.getElementById("serialCount").value);
 
-    if (!group || isNaN(start) || isNaN(count) || count <= 0) {
+    if (!group || isNaN(start) || isNaN(ticketCount) || ticketCount <= 0) {
         alert("入力内容を確認してください");
         return;
     }
 
     for (let i = 0; i < ticketCount; i++) {
-
         createTicket(
             group.padStart(2, "0"),
             String(start + i).padStart(6, "0")
         );
-
     }
 
-    serialArea.classList.toggle("open");
-
-    if (serialArea.style.display === "none") {
-        serialArea.style.display = "block";
-    } else {
-        serialArea.style.display = "none";
-    }
-
+    serialArea.classList.remove("open");
 });
 
 addButton.addEventListener("click", () => {
