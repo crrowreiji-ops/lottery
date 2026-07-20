@@ -91,6 +91,24 @@ hr {
     margin-top:15px;
 }
 
+#serialArea{
+    display:none;
+}
+
+#serialArea.open{
+    display:block;
+}
+
+.button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-row button {
+    margin-top: 0;
+}
 /* ===========================
    結果
 =========================== */

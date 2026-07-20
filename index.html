@@ -26,38 +26,51 @@
 
 <div id="tickets"></div>
 
-<h3>連番入力</h3>
+<div class="button-row">
 
-<div class="serial-input">
+    <button id="addButton">
+        <span class="material-symbols-outlined">add</span>
+        1枚追加
+    </button>
 
-    <input id="serialGroup"
-           type="text"
-           placeholder="組"
-           maxlength="2"
-           inputmode="numeric">
-
-    <input id="serialStart"
-           type="text"
-           placeholder="開始番号"
-           maxlength="6"
-           inputmode="numeric">
-
-    <input id="serialCount"
-           type="number"
-           placeholder="枚数"
-           min="1">
+    <button id="serialButton">
+        <span class="material-symbols-outlined">library_add</span>
+        連番追加
+    </button>
 
 </div>
 
-<button id="serialButton">
-    <span class="material-symbols-outlined">library_add</span>
-    連番生成
-</button>
+<div id="serialArea">
 
-<button id="addButton">
-    <span class="material-symbols-outlined">add</span>
-    追加
-</button>
+    <h3>連番入力</h3>
+
+    <div class="serial-input">
+
+        <input id="serialGroup"
+               type="text"
+               placeholder="組"
+               maxlength="2"
+               inputmode="numeric">
+
+        <input id="serialStart"
+               type="text"
+               placeholder="開始番号"
+               maxlength="6"
+               inputmode="numeric">
+
+        <input id="serialCount"
+               type="number"
+               placeholder="枚数"
+               min="1">
+
+    </div>
+
+    <button id="generateSerialButton">
+        <span class="material-symbols-outlined">playlist_add</span>
+        生成
+    </button>
+
+</div>
 
     <button id="checkButton">
     <span class="material-symbols-outlined">check_circle</span>
