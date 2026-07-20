@@ -26,6 +26,34 @@
 
 <div id="tickets"></div>
 
+<h3>連番入力</h3>
+
+<div class="serial-input">
+
+    <input id="serialGroup"
+           type="text"
+           placeholder="組"
+           maxlength="2"
+           inputmode="numeric">
+
+    <input id="serialStart"
+           type="text"
+           placeholder="開始番号"
+           maxlength="6"
+           inputmode="numeric">
+
+    <input id="serialCount"
+           type="number"
+           placeholder="枚数"
+           min="1">
+
+</div>
+
+<button id="serialButton">
+    <span class="material-symbols-outlined">library_add</span>
+    連番生成
+</button>
+
 <button id="addButton">
     <span class="material-symbols-outlined">add</span>
     追加
