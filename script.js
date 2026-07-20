@@ -87,7 +87,7 @@ function updateTicketNumbers() {
     count = ticketList.length;
 }
 
-function createTicket() {
+function createTicket(group = "", number = "") {
 
     count++;
 
@@ -100,15 +100,19 @@ function createTicket() {
 
         <div class="ticket-inputs">
 
-            <input class="group" type="text"
-                placeholder="01"
-                maxlength="2"
-                inputmode="numeric">
+            <input class="group"
+    type="text"
+    value="${group}"
+    placeholder="01"
+    maxlength="2"
+    inputmode="numeric">
 
-            <input class="number" type="text"
-                placeholder="111111"
-                maxlength="6"
-                inputmode="numeric">
+<input class="number"
+    type="text"
+    value="${number}"
+    placeholder="111111"
+    maxlength="6"
+    inputmode="numeric">
 
             <button class="deleteButton">
                 <span class="material-symbols-outlined">
@@ -132,6 +136,30 @@ function createTicket() {
 }
 
 createTicket();
+
+const serialButton = document.getElementById("serialButton");
+
+serialButton.addEventListener("click", () => {
+
+    const group = document.getElementById("serialGroup").value;
+    const start = Number(document.getElementById("serialStart").value);
+    const count = Number(document.getElementById("serialCount").value);
+
+    if (!group || isNaN(start) || isNaN(count) || count <= 0) {
+        alert("入力内容を確認してください");
+        return;
+    }
+
+    for (let i = 0; i < count; i++) {
+
+        createTicket(
+            group.padStart(2, "0"),
+            String(start + i).padStart(6, "0")
+        );
+
+    }
+
+});
 
 addButton.addEventListener("click", () => {
 
