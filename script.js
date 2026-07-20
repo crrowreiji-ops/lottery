@@ -71,6 +71,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 const addButton = document.getElementById("addButton");
 const tickets = document.getElementById("tickets");
 
+const serialButton = document.getElementById("serialButton");
+const serialArea = document.getElementById("serialArea");
+
 let count = 0;
 
 
@@ -157,6 +160,14 @@ serialButton.addEventListener("click", () => {
             String(start + i).padStart(6, "0")
         );
 
+    }
+
+    serialArea.classList.toggle("open");
+
+    if (serialArea.style.display === "none") {
+        serialArea.style.display = "block";
+    } else {
+        serialArea.style.display = "none";
     }
 
 });
