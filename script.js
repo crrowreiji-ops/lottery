@@ -247,6 +247,7 @@ for(let i = 0; i < groups.length; i++){
     `${groups[i].value}組${numbersInput[i].value}`;
 
 if (duplicateCheck.has(ticketNumber)) {
+    console.log("重複発見", ticketNumber);
 
     const firstIndex = duplicateCheck.get(ticketNumber);
 
