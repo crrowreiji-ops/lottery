@@ -245,3 +245,43 @@ hr {
     font-size: 24px;
     font-weight: bold;
 }
+
+.hit-row{
+    background:#f8fff4;
+    border-left:6px solid #43a047;
+    border-radius:8px;
+    padding:12px;
+    margin:8px 0;
+}
+
+.prize-first{
+    color:#d4af37;
+}
+
+.prize-second{
+    color:#ff9800;
+}
+
+.prize-third{
+    color:#2196f3;
+}
+
+.prize-fourth{
+    color:#00acc1;
+}
+
+.prize-fifth{
+    color:#43a047;
+}
+
+.prize-sixth{
+    color:#757575;
+}
+
+.profit{
+    color:#2e7d32;
+}
+
+.loss{
+    color:#d32f2f;
+}

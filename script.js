@@ -50,6 +50,34 @@ function checkPrize(ticket, prize) {
     }
 }
 
+function getPrizeClass(prizeName){
+
+    switch(prizeName){
+
+        case "1等":
+            return "prize-first";
+
+        case "2等":
+            return "prize-second";
+
+        case "3等":
+            return "prize-third";
+
+        case "4等":
+            return "prize-fourth";
+
+        case "5等":
+            return "prize-fifth";
+
+        case "6等":
+            return "prize-sixth";
+
+        default:
+            return "";
+    }
+
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     const select = document.getElementById("lottery");
@@ -338,12 +366,15 @@ if (!ticket) {
 
         if (checkPrize(ticket, prize)) {
 
-            resultHtml += `
-<div class="result-row">
+resultHtml += `
+<div class="result-row hit-row">
+
     <span>${index + 1}枚目：${number}</span>
-    <span class="hit">
+
+    <span class="hit ${getPrizeClass(prize.name)}">
         ${prize.name}（${prize.money.toLocaleString()}円）
     </span>
+
 </div>
 `;
                 totalPrize += prize.money;
@@ -381,7 +412,9 @@ resultHtml += `
     <p>${totalCost.toLocaleString()}円</p>
 
     <h3>損益</h3>
-    <p>${profit >= 0 ? "+" : ""}${profit.toLocaleString()}円</p>
+    <p class="${profit >= 0 ? "profit" : "loss"}">
+    ${profit >= 0 ? "+" : ""}${profit.toLocaleString()}円
+</p>
 
 </div>
 `;
