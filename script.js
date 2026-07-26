@@ -219,7 +219,7 @@ const numbersInput = document.querySelectorAll(".number");
 
 
 const numbers = [];
-
+const duplicateCheck = new Set();
 
 for(let i = 0; i < groups.length; i++){
 
@@ -230,9 +230,18 @@ for(let i = 0; i < groups.length; i++){
         continue;
     }
 
-    numbers.push(
-        `${groups[i].value}組${numbersInput[i].value}`
-    );
+    const ticketNumber =
+        `${groups[i].value}組${numbersInput[i].value}`;
+        
+        if (duplicateCheck.has(ticketNumber)) {
+            
+            alert(`${ticketNumber} は重複しています。`);
+        return;
+        }
+
+    duplicateCheck.add(ticketNumber);
+
+    numbers.push(ticketNumber);
 
 }
 
