@@ -203,7 +203,10 @@ generateSerialButton.addEventListener("click", () => {
         return;
     }
 
-    for (const ticket of ticketList) {
+    const ticketList = document.querySelectorAll(".ticket");
+let serialIndex = 0;
+
+for (const ticket of ticketList) {
 
     if (serialIndex >= ticketCount) {
         break;
@@ -216,17 +219,14 @@ generateSerialButton.addEventListener("click", () => {
         groupInput.value === "" &&
         numberInput.value === ""
     ) {
-
         groupInput.value = group.padStart(2, "0");
-
         numberInput.value =
             String(start + serialIndex).padStart(6, "0");
 
         serialIndex++;
-
     }
-
 }
+
 while (serialIndex < ticketCount) {
 
     createTicket(
@@ -236,11 +236,10 @@ while (serialIndex < ticketCount) {
     );
 
     serialIndex++;
-
 }
-    const ticketList = document.querySelectorAll(".ticket");
-    let serialIndex = 0;
-    serialArea.classList.remove("open");
+
+serialArea.classList.remove("open");
+
 });
 
 addButton.addEventListener("click", () => {
