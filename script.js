@@ -203,15 +203,43 @@ generateSerialButton.addEventListener("click", () => {
         return;
     }
 
-    for (let i = 0; i < ticketCount; i++) {
-        createTicket(
-    group.padStart(2, "0"),
-    String(start + i).padStart(6, "0"),
-    true
-);
+    const ticketList = document.querySelectorAll(".ticket");
+let serialIndex = 0;
+
+for (const ticket of ticketList) {
+
+    if (serialIndex >= ticketCount) {
+        break;
     }
 
-    serialArea.classList.remove("open");
+    const groupInput = ticket.querySelector(".group");
+    const numberInput = ticket.querySelector(".number");
+
+    if (
+        groupInput.value === "" &&
+        numberInput.value === ""
+    ) {
+        groupInput.value = group.padStart(2, "0");
+        numberInput.value =
+            String(start + serialIndex).padStart(6, "0");
+
+        serialIndex++;
+    }
+}
+
+while (serialIndex < ticketCount) {
+
+    createTicket(
+        group.padStart(2, "0"),
+        String(start + serialIndex).padStart(6, "0"),
+        true
+    );
+
+    serialIndex++;
+}
+
+serialArea.classList.remove("open");
+
 });
 
 addButton.addEventListener("click", () => {
