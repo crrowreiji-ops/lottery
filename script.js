@@ -231,17 +231,18 @@ for(let i = 0; i < groups.length; i++){
     }
 
     const ticketNumber =
-        `${groups[i].value}組${numbersInput[i].value}`;
-        
-        if (duplicateCheck.has(ticketNumber)) {
-            
-            alert(`${ticketNumber} は重複しています。`);
-        return;
-        }
+    `${groups[i].value}組${numbersInput[i].value}`;
 
-    duplicateCheck.add(ticketNumber);
+if (duplicateCheck.has(ticketNumber)) {
 
-    numbers.push(ticketNumber);
+    alert(`${ticketNumber} は重複しています。`);
+    return;
+
+}
+
+duplicateCheck.add(ticketNumber);
+
+numbers.push(ticketNumber);
 
 }
 
