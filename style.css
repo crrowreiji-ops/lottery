@@ -136,6 +136,17 @@ hr {
     font-size:14px;
 
 }
+
+.ticket-inputs.duplicate{
+    border:2px solid #e53935;
+    border-radius:8px;
+}
+
+.duplicate-message{
+    margin-top:6px;
+    color:#e53935;
+    font-size:14px;
+}
 /* ===========================
    結果
 =========================== */

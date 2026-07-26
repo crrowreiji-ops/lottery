@@ -100,32 +100,35 @@ function createTicket(group = "", number = "") {
     div.className = "ticket";
 
     div.innerHTML = `
-        <p class="ticket-title">${count}枚目</p>
+    <p class="ticket-title">${count}枚目</p>
 
-        <div class="ticket-inputs">
+    <div class="ticket-inputs">
 
-            <input class="group"
-    type="text"
-    value="${group}"
-    placeholder="01"
-    maxlength="2"
-    inputmode="numeric">
+        <input class="group"
+            type="text"
+            value="${group}"
+            placeholder="01"
+            maxlength="2"
+            inputmode="numeric">
 
-<input class="number"
-    type="text"
-    value="${number}"
-    placeholder="111111"
-    maxlength="6"
-    inputmode="numeric">
+        <input class="number"
+            type="text"
+            value="${number}"
+            placeholder="111111"
+            maxlength="6"
+            inputmode="numeric">
 
-            <button class="deleteButton">
-                <span class="material-symbols-outlined">
-                    delete
-                </span>
-            </button>
+        <button class="deleteButton">
+            <span class="material-symbols-outlined">
+                delete
+            </span>
+        </button>
 
-        </div>
-    `;
+    </div>
+
+    <p class="duplicate-message"></p>
+
+`;
 
     div.querySelector(".deleteButton").addEventListener("click", () => {
 
@@ -216,10 +219,20 @@ button.addEventListener("click", async () => {
     // 入力された番号を取得
 const groups = document.querySelectorAll(".group");
 const numbersInput = document.querySelectorAll(".number");
+const ticketElements = document.querySelectorAll(".ticket");
 
+ticketElements.forEach(ticket => {
+
+    ticket.querySelector(".ticket-inputs")
+        .classList.remove("duplicate");
+
+    ticket.querySelector(".duplicate-message")
+        .textContent = "";
+
+});
 
 const numbers = [];
-const duplicateCheck = new Set();
+const duplicateCheck = new Map();
 
 for(let i = 0; i < groups.length; i++){
 
@@ -235,12 +248,21 @@ for(let i = 0; i < groups.length; i++){
 
 if (duplicateCheck.has(ticketNumber)) {
 
-    alert(`${ticketNumber} は重複しています。`);
-    return;
+    const firstIndex = duplicateCheck.get(ticketNumber);
 
+    ticketElements[i]
+        .querySelector(".ticket-inputs")
+        .classList.add("duplicate");
+
+    ticketElements[i]
+        .querySelector(".duplicate-message")
+        .textContent =
+            `${firstIndex + 1}枚目と重複しています`;
+
+    continue;
 }
 
-duplicateCheck.add(ticketNumber);
+duplicateCheck.set(ticketNumber, i);
 
 numbers.push(ticketNumber);
 
