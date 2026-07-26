@@ -154,6 +154,32 @@ hr {
     border-radius:8px;
     padding:10px;
 }
+
+.ticket-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+}
+
+.serial-badge{
+    display:flex;
+    align-items:center;
+    gap:4px;
+
+    background:#4caf50;
+    color:white;
+
+    font-size:12px;
+    font-weight:bold;
+
+    padding:2px 8px;
+    border-radius:999px;
+}
+
+.serial-badge .material-symbols-outlined{
+    font-size:16px;
+}
 /* ===========================
    結果
 =========================== */

@@ -102,7 +102,22 @@ function createTicket(group = "", number = "", isSerial = false) {
     : "ticket";
 
     div.innerHTML = `
+    <div class="ticket-header">
+
     <p class="ticket-title">${count}枚目</p>
+
+    ${
+        isSerial
+        ? `<span class="serial-badge">
+            <span class="material-symbols-outlined">
+                tag
+            </span>
+            連番
+        </span>`
+        : ""
+    }
+
+</div>
 
     <div class="ticket-inputs">
 
