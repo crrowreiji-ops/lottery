@@ -91,13 +91,15 @@ function updateTicketNumbers() {
     count = ticketList.length;
 }
 
-function createTicket(group = "", number = "") {
+function createTicket(group = "", number = "", isSerial = false) {
 
     count++;
 
     const div = document.createElement("div");
 
-    div.className = "ticket";
+    div.className = isSerial
+    ? "ticket serial-ticket"
+    : "ticket";
 
     div.innerHTML = `
     <p class="ticket-title">${count}枚目</p>
@@ -188,9 +190,10 @@ generateSerialButton.addEventListener("click", () => {
 
     for (let i = 0; i < ticketCount; i++) {
         createTicket(
-            group.padStart(2, "0"),
-            String(start + i).padStart(6, "0")
-        );
+    group.padStart(2, "0"),
+    String(start + i).padStart(6, "0"),
+    true
+);
     }
 
     serialArea.classList.remove("open");
