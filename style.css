@@ -84,11 +84,26 @@ hr {
     font-size: 22px;
 }
 
-.serial-input{
-    display:grid;
-    grid-template-columns:1fr 2fr 1fr;
-    gap:10px;
-    margin-top:15px;
+.serial-input {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.serial-input input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+@media (max-width: 600px) {
+
+    .serial-input {
+        grid-template-columns: 1fr;
+    }
+
 }
 
 #serialArea{
