@@ -285,3 +285,11 @@ hr {
 .loss{
     color:#d32f2f;
 }
+
+.result-details {
+    margin-top: 30px;
+}
+
+.result-details h3 {
+    margin-bottom: 15px;
+}

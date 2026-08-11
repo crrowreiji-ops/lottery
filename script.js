@@ -192,31 +192,7 @@ createTicket();
 
 serialButton.addEventListener("click", () => {
 
-    // const group = document.getElementById("serialGroup").value;
-    // const start = Number(document.getElementById("serialStart").value);
-    // const ticketCount = Number(document.getElementById("serialCount").value);
-
-    // if (!group || isNaN(start) || isNaN(count) || ticketCount <= 0) {
-    //     alert("入力内容を確認してください");
-    //     return;
-    // }
-
-    // for (let i = 0; i < ticketCount; i++) {
-
-    //     createTicket(
-    //         group.padStart(2, "0"),
-    //         String(start + i).padStart(6, "0")
-    //     );
-
-    // }
-
     serialArea.classList.toggle("open");
-
-    // if (serialArea.style.display === "none") {
-    //     serialArea.style.display = "block";
-    // } else {
-    //     serialArea.style.display = "none";
-    // }
 
 });
 
@@ -345,6 +321,7 @@ numbers.push(ticketNumber);
 
 
 let resultHtml = `<h3>${lotteryData.name}</h3>`;
+let resultRows = "";
 let totalPrize = 0;
 
 
@@ -366,7 +343,7 @@ if (!ticket) {
 
         if (checkPrize(ticket, prize)) {
 
-resultHtml += `
+resultRows += `
 <div class="result-row hit-row">
 
     <span>${index + 1}枚目：${number}</span>
@@ -387,7 +364,7 @@ resultHtml += `
 
 
     if (!hit) {
-        resultHtml += `
+        resultRows += `
 <div class="result-row">
     <span>${index + 1}枚目：${number}</span>
     <span class="miss">はずれ</span>
@@ -403,6 +380,7 @@ const totalCost = numbers.length * ticketPrice;
 const profit = totalPrize - totalCost;
 
 resultHtml += `
+
 <div class="summary">
 
     <h3>当選金額合計</h3>
@@ -413,10 +391,19 @@ resultHtml += `
 
     <h3>損益</h3>
     <p class="${profit >= 0 ? "profit" : "loss"}">
-    ${profit >= 0 ? "+" : ""}${profit.toLocaleString()}円
-</p>
+        ${profit >= 0 ? "+" : ""}${profit.toLocaleString()}円
+    </p>
 
 </div>
+
+<div class="result-details">
+
+    <h3>当選結果</h3>
+
+    ${resultRows}
+
+</div>
+
 `;
 
 result.innerHTML = resultHtml;
