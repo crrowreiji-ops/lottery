@@ -1,0 +1,56 @@
+{
+  "id": "summer2026",
+  "name": "サマージャンボ2026",
+  "drawDate": "2026-08-12",
+
+  "prizes": [
+    {
+      "name": "1等",
+      "money": 500000000,
+      "type": "exact",
+      "group": "94",
+      "number": "139107"
+    },
+    {
+      "name": "1等前後賞",
+      "money": 100000000,
+      "type": "adjacent",
+      "group": "94",
+      "number": "139107"
+    },
+    {
+      "name": "1等組違い賞",
+      "money": 100000,
+      "type": "same_number",
+      "number": "139107"
+    },
+    {
+      "name": "2等",
+      "money": 1000000,
+      "type": "group_last_digit",
+      "group": "2",
+      "number": "121015"
+    },
+    {
+      "name": "3等",
+      "money": 10000,
+      "type": "suffix",
+      "digits": 3,
+      "number": "387"
+    },
+    {
+      "name": "4等",
+      "money": 3000,
+      "type": "suffix",
+      "digits": 2,
+      "number": "37"
+    },
+    {
+      "name": "5等",
+      "money": 300,
+      "type": "suffix",
+      "digits": 1,
+      "number": "1"
+    }
+  ]
+}
