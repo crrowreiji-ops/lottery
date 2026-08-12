@@ -39,6 +39,12 @@ function checkPrize(ticket, prize) {
         case "same_number":
             return ticket.number === prize.number;
 
+        case "group_last_digit":
+        return (
+            ticket.group.slice(-1) === prize.group &&
+            ticket.number === prize.number
+        );
+
         case "exact_number":
             return ticket.number === prize.number;
 
